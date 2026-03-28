@@ -1,0 +1,48 @@
+watching PID 2524609
+    PID TTY          TIME CMD
+2443234 pts/30   00:00:00 bash
+2524602 pts/30   00:00:00 unittest.sh
+2524609 pts/30   00:00:00 cmsRun
+2524636 pts/30   00:00:00 sh
+2524637 pts/30   00:00:00 cmsTriton
+2524641 pts/30   00:00:00 cmsTriton
+2524643 pts/30   00:00:00 ps
+2524646 pts/30   00:00:00 cp
+trigger 1:
+    PID TTY          TIME CMD
+2443234 pts/30   00:00:00 bash
+2524641 pts/30   00:00:00 cmsTriton
+2525286 pts/30   00:00:00 ps
+trigger 2:
+    PID TTY          TIME CMD
+2443234 pts/30   00:00:00 bash
+2524641 pts/30   00:00:00 cmsTriton
+2525504 pts/30   00:00:00 ps
+trigger 3:
+    PID TTY          TIME CMD
+2443234 pts/30   00:00:00 bash
+2524641 pts/30   00:00:00 cmsTriton
+2525568 pts/30   00:00:00 ps
+trigger 4:
+    PID TTY          TIME CMD
+2443234 pts/30   00:00:00 bash
+2524641 pts/30   00:00:00 cmsTriton
+2525674 pts/30   00:00:00 ps
+trigger 5:
+    PID TTY          TIME CMD
+2443234 pts/30   00:00:00 bash
+2524641 pts/30   00:00:00 cmsTriton
+2526035 pts/30   00:00:00 ps
+trigger 6:
+    PID TTY          TIME CMD
+2443234 pts/30   00:00:00 bash
+2524641 pts/30   00:00:00 cmsTriton
+2526228 pts/30   00:00:00 ps
+Error for command "stop": no instance found
+
+Usage:
+  apptainer [global options...] instance stop [stop options...] [instance]
+
+Run 'apptainer --help' for more detailed usage information.
+mv: 'log_triton_server_instance_cpu_cb688a4a-1b2d-45ce-8d16-46ae7da1b09d.log' and '/eos/user/b/bbapi/Energy_regression/CMSSW_13_3_3/src/HeterogeneousCore/SonicTriton/test/log_triton_server_instance_cpu_cb688a4a-1b2d-45ce-8d16-46ae7da1b09d.log' are the same file
+mv: 'log_stop_triton_server_instance_cpu_cb688a4a-1b2d-45ce-8d16-46ae7da1b09d.log' and '/eos/user/b/bbapi/Energy_regression/CMSSW_13_3_3/src/HeterogeneousCore/SonicTriton/test/log_stop_triton_server_instance_cpu_cb688a4a-1b2d-45ce-8d16-46ae7da1b09d.log' are the same file

@@ -1,0 +1,638 @@
+
+=============================
+== Triton Inference Server ==
+=============================
+
+NVIDIA Release 22.07 (build 41737377)
+Triton Server Version 2.24.0
+
+Copyright (c) 2018-2022, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+W0207 04:16:27.114639 20 pinned_memory_manager.cc:236] Unable to allocate pinned system memory, pinned memory pool will not be available: CUDA driver version is insufficient for CUDA runtime version
+I0207 04:16:27.114784 20 cuda_memory_manager.cc:115] CUDA memory pool disabled
+I0207 04:16:27.118060 20 model_config_utils.cc:645] Server side auto-completed config: name: "gat_test"
+platform: "pytorch_libtorch"
+input {
+  name: "x__0"
+  data_type: TYPE_FP32
+  dims: -1
+  dims: 1433
+}
+input {
+  name: "edgeindex__1"
+  data_type: TYPE_INT64
+  dims: 2
+  dims: -1
+}
+output {
+  name: "logits__0"
+  data_type: TYPE_FP32
+  dims: -1
+  dims: 7
+}
+instance_group {
+  count: 1
+  kind: KIND_CPU
+}
+default_model_filename: "model.pt"
+backend: "pytorch"
+
+I0207 04:16:27.118139 20 model_repository_manager.cc:1206] loading: gat_test:1
+I0207 04:16:27.118512 20 backend_model.cc:292] Adding default backend config setting: default-max-batch-size,4
+I0207 04:16:27.118565 20 shared_library.cc:108] OpenLibraryHandle: /opt/tritonserver/backends/pytorch/libtriton_pytorch.so
+WARNING: [Torch-TensorRT] - Unable to read CUDA capable devices. Return status: 35
+I0207 04:16:31.263959 20 libtorch.cc:1917] TRITONBACKEND_Initialize: pytorch
+I0207 04:16:31.263991 20 libtorch.cc:1927] Triton TRITONBACKEND API version: 1.10
+I0207 04:16:31.264001 20 libtorch.cc:1933] 'pytorch' TRITONBACKEND API version: 1.10
+I0207 04:16:31.264018 20 libtorch.cc:1966] TRITONBACKEND_ModelInitialize: gat_test (version 1)
+I0207 04:16:31.264937 20 model_config_utils.cc:1656] ModelConfig 64-bit fields:
+I0207 04:16:31.264951 20 model_config_utils.cc:1658] 	ModelConfig::dynamic_batching::default_queue_policy::default_timeout_microseconds
+I0207 04:16:31.264957 20 model_config_utils.cc:1658] 	ModelConfig::dynamic_batching::max_queue_delay_microseconds
+I0207 04:16:31.264963 20 model_config_utils.cc:1658] 	ModelConfig::dynamic_batching::priority_queue_policy::value::default_timeout_microseconds
+I0207 04:16:31.264969 20 model_config_utils.cc:1658] 	ModelConfig::ensemble_scheduling::step::model_version
+I0207 04:16:31.264974 20 model_config_utils.cc:1658] 	ModelConfig::input::dims
+I0207 04:16:31.264980 20 model_config_utils.cc:1658] 	ModelConfig::input::reshape::shape
+I0207 04:16:31.264986 20 model_config_utils.cc:1658] 	ModelConfig::instance_group::secondary_devices::device_id
+I0207 04:16:31.264992 20 model_config_utils.cc:1658] 	ModelConfig::model_warmup::inputs::value::dims
+I0207 04:16:31.264997 20 model_config_utils.cc:1658] 	ModelConfig::optimization::cuda::graph_spec::graph_lower_bound::input::value::dim
+I0207 04:16:31.265003 20 model_config_utils.cc:1658] 	ModelConfig::optimization::cuda::graph_spec::input::value::dim
+I0207 04:16:31.265009 20 model_config_utils.cc:1658] 	ModelConfig::output::dims
+I0207 04:16:31.265014 20 model_config_utils.cc:1658] 	ModelConfig::output::reshape::shape
+I0207 04:16:31.265020 20 model_config_utils.cc:1658] 	ModelConfig::sequence_batching::direct::max_queue_delay_microseconds
+I0207 04:16:31.265025 20 model_config_utils.cc:1658] 	ModelConfig::sequence_batching::max_sequence_idle_microseconds
+I0207 04:16:31.265031 20 model_config_utils.cc:1658] 	ModelConfig::sequence_batching::oldest::max_queue_delay_microseconds
+I0207 04:16:31.265037 20 model_config_utils.cc:1658] 	ModelConfig::sequence_batching::state::dims
+I0207 04:16:31.265053 20 model_config_utils.cc:1658] 	ModelConfig::sequence_batching::state::initial_state::dims
+I0207 04:16:31.265059 20 model_config_utils.cc:1658] 	ModelConfig::version_policy::specific::versions
+W0207 04:16:31.265191 20 libtorch.cc:262] skipping model configuration auto-complete for 'gat_test': not supported for pytorch backend
+I0207 04:16:31.265486 20 libtorch.cc:291] Optimized execution is enabled for model instance 'gat_test'
+I0207 04:16:31.265525 20 libtorch.cc:310] Cache Cleaning is disabled for model instance 'gat_test'
+I0207 04:16:31.265532 20 libtorch.cc:327] Inference Mode is disabled for model instance 'gat_test'
+I0207 04:16:31.265538 20 libtorch.cc:422] NvFuser is not specified for model instance 'gat_test'
+I0207 04:16:31.265582 20 libtorch.cc:2010] TRITONBACKEND_ModelInstanceInitialize: gat_test_0 (CPU device 0)
+I0207 04:16:31.265593 20 backend_model_instance.cc:68] Creating instance gat_test_0 on CPU using artifact 'model.pt'
+I0207 04:16:31.399368 20 backend_model_instance.cc:735] Starting backend thread for gat_test_0 at nice 0 on device 0...
+I0207 04:16:31.399520 20 model_repository_manager.cc:1352] successfully loaded 'gat_test' version 1
+I0207 04:16:31.399630 20 server.cc:559] 
++------------------+------+
+| Repository Agent | Path |
++------------------+------+
++------------------+------+
+
+I0207 04:16:31.399684 20 server.cc:586] 
++---------+---------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Backend | Path                                                    | Config                                                                                                                                                        |
++---------+---------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| pytorch | /opt/tritonserver/backends/pytorch/libtriton_pytorch.so | {"cmdline":{"auto-complete-config":"true","min-compute-capability":"6.000000","backend-directory":"/opt/tritonserver/backends","default-max-batch-size":"4"}} |
++---------+---------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+I0207 04:16:31.399812 20 server.cc:629] 
++----------+---------+--------+
+| Model    | Version | Status |
++----------+---------+--------+
+| gat_test | 1       | READY  |
++----------+---------+--------+
+
+I0207 04:16:31.399996 20 tritonserver.cc:2176] 
++----------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Option                           | Value                                                                                                                                                                                        |
++----------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| server_id                        | triton                                                                                                                                                                                       |
+| server_version                   | 2.24.0                                                                                                                                                                                       |
+| server_extensions                | classification sequence model_repository model_repository(unload_dependents) schedule_policy model_configuration system_shared_memory cuda_shared_memory binary_tensor_data statistics trace |
+| model_repository_path[0]         | /tmp/bbapi/c05e7126-cef1-4af9-803e-f73fc1ee5231/local_model_repo                                                                                                                             |
+| model_control_mode               | MODE_NONE                                                                                                                                                                                    |
+| strict_model_config              | 0                                                                                                                                                                                            |
+| rate_limit                       | OFF                                                                                                                                                                                          |
+| pinned_memory_pool_byte_size     | 268435456                                                                                                                                                                                    |
+| response_cache_byte_size         | 0                                                                                                                                                                                            |
+| min_supported_compute_capability | 6.0                                                                                                                                                                                          |
+| strict_readiness                 | 1                                                                                                                                                                                            |
+| exit_timeout                     | 30                                                                                                                                                                                           |
++----------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+I0207 04:16:31.400446 20 grpc_server.cc:4552] === GRPC KeepAlive Options ===
+I0207 04:16:31.400457 20 grpc_server.cc:4553] keepalive_time_ms: 7200000
+I0207 04:16:31.400463 20 grpc_server.cc:4555] keepalive_timeout_ms: 20000
+I0207 04:16:31.400469 20 grpc_server.cc:4557] keepalive_permit_without_calls: 0
+I0207 04:16:31.400475 20 grpc_server.cc:4559] http2_max_pings_without_data: 2
+I0207 04:16:31.400480 20 grpc_server.cc:4561] http2_min_recv_ping_interval_without_data_ms: 300000
+I0207 04:16:31.400486 20 grpc_server.cc:4564] http2_max_ping_strikes: 2
+I0207 04:16:31.400505 20 grpc_server.cc:4566] ==============================
+I0207 04:16:31.402303 20 grpc_server.cc:225] Ready for RPC 'ServerLive', 0
+I0207 04:16:31.402328 20 grpc_server.cc:225] Ready for RPC 'ServerReady', 0
+I0207 04:16:31.402342 20 grpc_server.cc:225] Ready for RPC 'ModelReady', 0
+I0207 04:16:31.402349 20 grpc_server.cc:225] Ready for RPC 'ServerMetadata', 0
+I0207 04:16:31.402358 20 grpc_server.cc:225] Ready for RPC 'ModelMetadata', 0
+I0207 04:16:31.402367 20 grpc_server.cc:225] Ready for RPC 'ModelConfig', 0
+I0207 04:16:31.402374 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 0
+I0207 04:16:31.402383 20 grpc_server.cc:225] Ready for RPC 'Trace', 0
+I0207 04:16:31.402445 20 grpc_server.cc:225] Ready for RPC 'SystemSharedMemoryStatus', 0
+I0207 04:16:31.402456 20 grpc_server.cc:225] Ready for RPC 'SystemSharedMemoryRegister', 0
+I0207 04:16:31.402464 20 grpc_server.cc:225] Ready for RPC 'SystemSharedMemoryUnregister', 0
+I0207 04:16:31.402472 20 grpc_server.cc:225] Ready for RPC 'CudaSharedMemoryStatus', 0
+I0207 04:16:31.402481 20 grpc_server.cc:225] Ready for RPC 'CudaSharedMemoryRegister', 0
+I0207 04:16:31.402499 20 grpc_server.cc:225] Ready for RPC 'CudaSharedMemoryUnregister', 0
+I0207 04:16:31.402515 20 grpc_server.cc:225] Ready for RPC 'RepositoryIndex', 0
+I0207 04:16:31.402525 20 grpc_server.cc:225] Ready for RPC 'RepositoryModelLoad', 0
+I0207 04:16:31.402534 20 grpc_server.cc:225] Ready for RPC 'RepositoryModelUnload', 0
+I0207 04:16:31.402555 20 grpc_server.cc:419] Thread started for CommonHandler
+I0207 04:16:31.402753 20 grpc_server.cc:3585] New request handler for ModelInferHandler, 0
+I0207 04:16:31.402805 20 grpc_server.cc:2509] Thread started for ModelInferHandler
+I0207 04:16:31.403000 20 grpc_server.cc:3585] New request handler for ModelInferHandler, 0
+I0207 04:16:31.403059 20 grpc_server.cc:2509] Thread started for ModelInferHandler
+I0207 04:16:31.403233 20 grpc_server.cc:3981] New request handler for ModelStreamInferHandler, 0
+I0207 04:16:31.403281 20 grpc_server.cc:2509] Thread started for ModelStreamInferHandler
+I0207 04:16:31.403289 20 grpc_server.cc:4608] Started GRPCInferenceService at 0.0.0.0:8001
+I0207 04:16:31.403653 20 http_server.cc:3312] Started HTTPService at 0.0.0.0:8000
+I0207 04:16:31.445216 20 http_server.cc:178] Started Metrics Service at 0.0.0.0:8002
+I0207 04:16:31.692477 20 grpc_server.cc:270] Process for ModelConfig, rpc_ok=1, 0 step START
+I0207 04:16:31.692526 20 grpc_server.cc:225] Ready for RPC 'ModelConfig', 1
+I0207 04:16:31.694814 20 grpc_server.cc:270] Process for ModelConfig, rpc_ok=1, 0 step COMPLETE
+I0207 04:16:31.694833 20 grpc_server.cc:411] Done for ModelConfig, 0
+I0207 04:16:31.695382 20 grpc_server.cc:270] Process for ModelMetadata, rpc_ok=1, 0 step START
+I0207 04:16:31.695399 20 grpc_server.cc:225] Ready for RPC 'ModelMetadata', 1
+I0207 04:16:31.695469 20 grpc_server.cc:270] Process for ModelMetadata, rpc_ok=1, 0 step COMPLETE
+I0207 04:16:31.695479 20 grpc_server.cc:411] Done for ModelMetadata, 0
+I0207 04:16:31.699047 20 grpc_server.cc:270] Process for ModelConfig, rpc_ok=1, 1 step START
+I0207 04:16:31.699068 20 grpc_server.cc:225] Ready for RPC 'ModelConfig', 2
+I0207 04:16:31.699604 20 grpc_server.cc:270] Process for ModelConfig, rpc_ok=1, 1 step COMPLETE
+I0207 04:16:31.699621 20 grpc_server.cc:411] Done for ModelConfig, 1
+I0207 04:16:31.699686 20 grpc_server.cc:270] Process for ModelMetadata, rpc_ok=1, 1 step START
+I0207 04:16:31.699701 20 grpc_server.cc:225] Ready for RPC 'ModelMetadata', 2
+I0207 04:16:31.699763 20 grpc_server.cc:270] Process for ModelMetadata, rpc_ok=1, 1 step COMPLETE
+I0207 04:16:31.699774 20 grpc_server.cc:411] Done for ModelMetadata, 1
+I0207 04:16:31.702575 20 grpc_server.cc:270] Process for ModelConfig, rpc_ok=1, 2 step START
+I0207 04:16:31.702594 20 grpc_server.cc:225] Ready for RPC 'ModelConfig', 3
+I0207 04:16:31.703030 20 grpc_server.cc:270] Process for ModelConfig, rpc_ok=1, 2 step COMPLETE
+I0207 04:16:31.703046 20 grpc_server.cc:411] Done for ModelConfig, 2
+I0207 04:16:31.703108 20 grpc_server.cc:270] Process for ModelMetadata, rpc_ok=1, 2 step START
+I0207 04:16:31.703120 20 grpc_server.cc:225] Ready for RPC 'ModelMetadata', 3
+I0207 04:16:31.703181 20 grpc_server.cc:270] Process for ModelMetadata, rpc_ok=1, 2 step COMPLETE
+I0207 04:16:31.703192 20 grpc_server.cc:411] Done for ModelMetadata, 2
+I0207 04:16:31.706029 20 grpc_server.cc:270] Process for ModelConfig, rpc_ok=1, 3 step START
+I0207 04:16:31.706049 20 grpc_server.cc:225] Ready for RPC 'ModelConfig', 4
+I0207 04:16:31.706461 20 grpc_server.cc:270] Process for ModelConfig, rpc_ok=1, 3 step COMPLETE
+I0207 04:16:31.706476 20 grpc_server.cc:411] Done for ModelConfig, 3
+I0207 04:16:31.706567 20 grpc_server.cc:270] Process for ModelMetadata, rpc_ok=1, 3 step START
+I0207 04:16:31.706581 20 grpc_server.cc:225] Ready for RPC 'ModelMetadata', 4
+I0207 04:16:31.706633 20 grpc_server.cc:270] Process for ModelMetadata, rpc_ok=1, 3 step COMPLETE
+I0207 04:16:31.706643 20 grpc_server.cc:411] Done for ModelMetadata, 3
+I0207 04:16:31.709843 20 grpc_server.cc:270] Process for ModelConfig, rpc_ok=1, 4 step START
+I0207 04:16:31.709865 20 grpc_server.cc:225] Ready for RPC 'ModelConfig', 5
+I0207 04:16:31.710313 20 grpc_server.cc:270] Process for ModelConfig, rpc_ok=1, 4 step COMPLETE
+I0207 04:16:31.710342 20 grpc_server.cc:411] Done for ModelConfig, 4
+I0207 04:16:31.710443 20 grpc_server.cc:270] Process for ModelMetadata, rpc_ok=1, 4 step START
+I0207 04:16:31.710460 20 grpc_server.cc:225] Ready for RPC 'ModelMetadata', 5
+I0207 04:16:31.710543 20 grpc_server.cc:270] Process for ModelMetadata, rpc_ok=1, 4 step COMPLETE
+I0207 04:16:31.710556 20 grpc_server.cc:411] Done for ModelMetadata, 4
+I0207 04:16:31.713584 20 grpc_server.cc:270] Process for ModelConfig, rpc_ok=1, 5 step START
+I0207 04:16:31.713605 20 grpc_server.cc:225] Ready for RPC 'ModelConfig', 6
+I0207 04:16:31.714062 20 grpc_server.cc:270] Process for ModelConfig, rpc_ok=1, 5 step COMPLETE
+I0207 04:16:31.714079 20 grpc_server.cc:411] Done for ModelConfig, 5
+I0207 04:16:31.714159 20 grpc_server.cc:270] Process for ModelMetadata, rpc_ok=1, 5 step START
+I0207 04:16:31.714172 20 grpc_server.cc:225] Ready for RPC 'ModelMetadata', 6
+I0207 04:16:31.714227 20 grpc_server.cc:270] Process for ModelMetadata, rpc_ok=1, 5 step COMPLETE
+I0207 04:16:31.714237 20 grpc_server.cc:411] Done for ModelMetadata, 5
+I0207 04:16:31.718331 20 grpc_server.cc:270] Process for SystemSharedMemoryRegister, rpc_ok=1, 0 step START
+I0207 04:16:31.718354 20 grpc_server.cc:225] Ready for RPC 'SystemSharedMemoryRegister', 1
+I0207 04:16:31.718604 20 grpc_server.cc:270] Process for SystemSharedMemoryRegister, rpc_ok=1, 0 step COMPLETE
+I0207 04:16:31.718616 20 grpc_server.cc:411] Done for SystemSharedMemoryRegister, 0
+I0207 04:16:31.718791 20 grpc_server.cc:270] Process for SystemSharedMemoryRegister, rpc_ok=1, 1 step START
+I0207 04:16:31.718806 20 grpc_server.cc:225] Ready for RPC 'SystemSharedMemoryRegister', 2
+I0207 04:16:31.718866 20 grpc_server.cc:270] Process for SystemSharedMemoryRegister, rpc_ok=1, 1 step COMPLETE
+I0207 04:16:31.718875 20 grpc_server.cc:411] Done for SystemSharedMemoryRegister, 1
+I0207 04:16:31.720480 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 0 step START
+I0207 04:16:31.720513 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 1
+I0207 04:16:31.720585 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 0 step COMPLETE
+I0207 04:16:31.720596 20 grpc_server.cc:411] Done for ModelStatistics, 0
+I0207 04:16:31.721030 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step START
+I0207 04:16:31.721056 20 grpc_server.cc:3585] New request handler for ModelInferHandler, 0
+I0207 04:16:31.721093 20 infer_request.cc:713] [request id: <id_unknown>] prepared: [0x0x7f8100003bd0] request id: , model: gat_test, requested version: -1, actual version: 1, flags: 0x0, correlation id: 0, batch size: 0, priority: 0, timeout (us): 0
+original inputs:
+[0x0x7f8100004088] input: x__0, type: FP32, original shape: [7,1433], batch + shape: [7,1433], shape: [7,1433]
+[0x0x7f8100003f08] input: edgeindex__1, type: INT64, original shape: [2,34], batch + shape: [2,34], shape: [2,34]
+override inputs:
+inputs:
+[0x0x7f8100003f08] input: edgeindex__1, type: INT64, original shape: [2,34], batch + shape: [2,34], shape: [2,34]
+[0x0x7f8100004088] input: x__0, type: FP32, original shape: [7,1433], batch + shape: [7,1433], shape: [7,1433]
+original requested outputs:
+logits__0
+requested outputs:
+logits__0
+
+I0207 04:16:31.721166 20 libtorch.cc:2076] model gat_test, instance gat_test_0, executing 1 requests
+I0207 04:16:31.721182 20 libtorch.cc:947] TRITONBACKEND_ModelExecute: Running gat_test_0 with 1 requests
+I0207 04:16:33.562788 20 infer_response.cc:167] add response output: output: logits__0, type: FP32, shape: [7,7]
+I0207 04:16:33.562838 20 grpc_server.cc:2592] GRPC: using buffer for 'logits__0', size: 196, addr: 0x7f81185682a0
+I0207 04:16:33.562851 20 grpc_server.cc:3756] ModelInferHandler::InferResponseComplete, 0 step ISSUED
+I0207 04:16:33.562865 20 grpc_server.cc:2712] GRPC free: size 196, addr 0x7f81185682a0
+I0207 04:16:33.562952 20 grpc_server.cc:3310] ModelInferHandler::InferRequestComplete
+I0207 04:16:33.562968 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step COMPLETE
+I0207 04:16:33.563000 20 grpc_server.cc:2502] Done for ModelInferHandler, 0
+I0207 04:16:33.563254 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 1 step START
+I0207 04:16:33.563276 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 2
+I0207 04:16:33.563362 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 1 step COMPLETE
+I0207 04:16:33.563371 20 grpc_server.cc:411] Done for ModelStatistics, 1
+I0207 04:16:33.566577 20 grpc_server.cc:270] Process for SystemSharedMemoryRegister, rpc_ok=1, 2 step START
+I0207 04:16:33.566589 20 grpc_server.cc:225] Ready for RPC 'SystemSharedMemoryRegister', 3
+I0207 04:16:33.566654 20 grpc_server.cc:270] Process for SystemSharedMemoryRegister, rpc_ok=1, 2 step COMPLETE
+I0207 04:16:33.566662 20 grpc_server.cc:411] Done for SystemSharedMemoryRegister, 2
+I0207 04:16:33.566793 20 grpc_server.cc:270] Process for SystemSharedMemoryRegister, rpc_ok=1, 3 step START
+I0207 04:16:33.566801 20 grpc_server.cc:225] Ready for RPC 'SystemSharedMemoryRegister', 4
+I0207 04:16:33.566843 20 grpc_server.cc:270] Process for SystemSharedMemoryRegister, rpc_ok=1, 3 step COMPLETE
+I0207 04:16:33.566850 20 grpc_server.cc:411] Done for SystemSharedMemoryRegister, 3
+I0207 04:16:33.566923 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 2 step START
+I0207 04:16:33.566932 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 3
+I0207 04:16:33.566984 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 2 step COMPLETE
+I0207 04:16:33.566992 20 grpc_server.cc:411] Done for ModelStatistics, 2
+I0207 04:16:33.567109 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step START
+I0207 04:16:33.567121 20 grpc_server.cc:3585] New request handler for ModelInferHandler, 0
+I0207 04:16:33.567146 20 infer_request.cc:713] [request id: <id_unknown>] prepared: [0x0x7f8100005290] request id: , model: gat_test, requested version: -1, actual version: 1, flags: 0x0, correlation id: 0, batch size: 0, priority: 0, timeout (us): 0
+original inputs:
+[0x0x7f81000056c8] input: x__0, type: FP32, original shape: [7,1433], batch + shape: [7,1433], shape: [7,1433]
+[0x0x7f81000055c8] input: edgeindex__1, type: INT64, original shape: [2,34], batch + shape: [2,34], shape: [2,34]
+override inputs:
+inputs:
+[0x0x7f81000055c8] input: edgeindex__1, type: INT64, original shape: [2,34], batch + shape: [2,34], shape: [2,34]
+[0x0x7f81000056c8] input: x__0, type: FP32, original shape: [7,1433], batch + shape: [7,1433], shape: [7,1433]
+original requested outputs:
+logits__0
+requested outputs:
+logits__0
+
+I0207 04:16:33.567187 20 libtorch.cc:2076] model gat_test, instance gat_test_0, executing 1 requests
+I0207 04:16:33.567202 20 libtorch.cc:947] TRITONBACKEND_ModelExecute: Running gat_test_0 with 1 requests
+I0207 04:16:33.580201 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 3 step START
+I0207 04:16:33.580219 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 4
+I0207 04:16:33.580270 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 3 step COMPLETE
+I0207 04:16:33.580277 20 grpc_server.cc:411] Done for ModelStatistics, 3
+I0207 04:16:33.580623 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step START
+I0207 04:16:33.580643 20 grpc_server.cc:3585] New request handler for ModelInferHandler, 0
+I0207 04:16:33.580659 20 infer_request.cc:713] [request id: <id_unknown>] prepared: [0x0x7f80f8003af0] request id: , model: gat_test, requested version: -1, actual version: 1, flags: 0x0, correlation id: 0, batch size: 0, priority: 0, timeout (us): 0
+original inputs:
+[0x0x7f80f8003fa8] input: x__0, type: FP32, original shape: [7,1433], batch + shape: [7,1433], shape: [7,1433]
+[0x0x7f80f8003e28] input: edgeindex__1, type: INT64, original shape: [2,34], batch + shape: [2,34], shape: [2,34]
+override inputs:
+inputs:
+[0x0x7f80f8003e28] input: edgeindex__1, type: INT64, original shape: [2,34], batch + shape: [2,34], shape: [2,34]
+[0x0x7f80f8003fa8] input: x__0, type: FP32, original shape: [7,1433], batch + shape: [7,1433], shape: [7,1433]
+original requested outputs:
+logits__0
+requested outputs:
+logits__0
+
+I0207 04:16:33.602275 20 infer_response.cc:167] add response output: output: logits__0, type: FP32, shape: [7,7]
+I0207 04:16:33.602306 20 grpc_server.cc:2592] GRPC: using buffer for 'logits__0', size: 196, addr: 0x7f8118556700
+I0207 04:16:33.602317 20 grpc_server.cc:3756] ModelInferHandler::InferResponseComplete, 0 step ISSUED
+I0207 04:16:33.602327 20 grpc_server.cc:2712] GRPC free: size 196, addr 0x7f8118556700
+I0207 04:16:33.602389 20 grpc_server.cc:3310] ModelInferHandler::InferRequestComplete
+I0207 04:16:33.602401 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step COMPLETE
+I0207 04:16:33.602417 20 grpc_server.cc:2502] Done for ModelInferHandler, 0
+I0207 04:16:33.602410 20 libtorch.cc:2076] model gat_test, instance gat_test_0, executing 1 requests
+I0207 04:16:33.602433 20 libtorch.cc:947] TRITONBACKEND_ModelExecute: Running gat_test_0 with 1 requests
+I0207 04:16:33.602938 20 infer_response.cc:167] add response output: output: logits__0, type: FP32, shape: [7,7]
+I0207 04:16:33.602957 20 grpc_server.cc:2592] GRPC: using buffer for 'logits__0', size: 196, addr: 0x7f8118b733c0
+I0207 04:16:33.602966 20 grpc_server.cc:3756] ModelInferHandler::InferResponseComplete, 0 step ISSUED
+I0207 04:16:33.602974 20 grpc_server.cc:2712] GRPC free: size 196, addr 0x7f8118b733c0
+I0207 04:16:33.603015 20 grpc_server.cc:3310] ModelInferHandler::InferRequestComplete
+I0207 04:16:33.603022 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step COMPLETE
+I0207 04:16:33.603029 20 grpc_server.cc:2502] Done for ModelInferHandler, 0
+I0207 04:16:33.603212 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 4 step START
+I0207 04:16:33.603241 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 5
+I0207 04:16:33.603321 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 5 step START
+I0207 04:16:33.603330 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 6
+I0207 04:16:33.603368 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 4 step COMPLETE
+I0207 04:16:33.603375 20 grpc_server.cc:411] Done for ModelStatistics, 4
+I0207 04:16:33.603386 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 5 step COMPLETE
+I0207 04:16:33.603394 20 grpc_server.cc:411] Done for ModelStatistics, 5
+I0207 04:16:33.603716 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 6 step START
+I0207 04:16:33.603726 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 7
+I0207 04:16:33.603768 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 6 step COMPLETE
+I0207 04:16:33.603776 20 grpc_server.cc:411] Done for ModelStatistics, 6
+I0207 04:16:33.603936 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step START
+I0207 04:16:33.603952 20 grpc_server.cc:3585] New request handler for ModelInferHandler, 0
+I0207 04:16:33.603970 20 infer_request.cc:713] [request id: <id_unknown>] prepared: [0x0x7f80f8000e80] request id: , model: gat_test, requested version: -1, actual version: 1, flags: 0x0, correlation id: 0, batch size: 0, priority: 0, timeout (us): 0
+original inputs:
+[0x0x7f80f8004fc8] input: x__0, type: FP32, original shape: [7,1433], batch + shape: [7,1433], shape: [7,1433]
+[0x0x7f80f8004ec8] input: edgeindex__1, type: INT64, original shape: [2,34], batch + shape: [2,34], shape: [2,34]
+override inputs:
+inputs:
+[0x0x7f80f8004ec8] input: edgeindex__1, type: INT64, original shape: [2,34], batch + shape: [2,34], shape: [2,34]
+[0x0x7f80f8004fc8] input: x__0, type: FP32, original shape: [7,1433], batch + shape: [7,1433], shape: [7,1433]
+original requested outputs:
+logits__0
+requested outputs:
+logits__0
+
+I0207 04:16:33.603992 20 libtorch.cc:2076] model gat_test, instance gat_test_0, executing 1 requests
+I0207 04:16:33.603999 20 libtorch.cc:947] TRITONBACKEND_ModelExecute: Running gat_test_0 with 1 requests
+I0207 04:16:33.604781 20 infer_response.cc:167] add response output: output: logits__0, type: FP32, shape: [7,7]
+I0207 04:16:33.604801 20 grpc_server.cc:2592] GRPC: using buffer for 'logits__0', size: 196, addr: 0x7f81185682a0
+I0207 04:16:33.604809 20 grpc_server.cc:3756] ModelInferHandler::InferResponseComplete, 0 step ISSUED
+I0207 04:16:33.604825 20 grpc_server.cc:2712] GRPC free: size 196, addr 0x7f81185682a0
+I0207 04:16:33.604961 20 grpc_server.cc:3310] ModelInferHandler::InferRequestComplete
+I0207 04:16:33.604994 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step COMPLETE
+I0207 04:16:33.605002 20 grpc_server.cc:2502] Done for ModelInferHandler, 0
+I0207 04:16:33.605045 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 7 step START
+I0207 04:16:33.605058 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 8
+I0207 04:16:33.605121 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 7 step COMPLETE
+I0207 04:16:33.605130 20 grpc_server.cc:411] Done for ModelStatistics, 7
+I0207 04:16:33.605449 20 grpc_server.cc:270] Process for SystemSharedMemoryRegister, rpc_ok=1, 4 step START
+I0207 04:16:33.605457 20 grpc_server.cc:225] Ready for RPC 'SystemSharedMemoryRegister', 5
+I0207 04:16:33.605525 20 grpc_server.cc:270] Process for SystemSharedMemoryRegister, rpc_ok=1, 4 step COMPLETE
+I0207 04:16:33.605535 20 grpc_server.cc:411] Done for SystemSharedMemoryRegister, 4
+I0207 04:16:33.605640 20 grpc_server.cc:270] Process for SystemSharedMemoryRegister, rpc_ok=1, 5 step START
+I0207 04:16:33.605653 20 grpc_server.cc:225] Ready for RPC 'SystemSharedMemoryRegister', 6
+I0207 04:16:33.605691 20 grpc_server.cc:270] Process for SystemSharedMemoryRegister, rpc_ok=1, 5 step COMPLETE
+I0207 04:16:33.605699 20 grpc_server.cc:411] Done for SystemSharedMemoryRegister, 5
+I0207 04:16:33.605753 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 8 step START
+I0207 04:16:33.605761 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 9
+I0207 04:16:33.605808 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 8 step COMPLETE
+I0207 04:16:33.605816 20 grpc_server.cc:411] Done for ModelStatistics, 8
+I0207 04:16:33.605891 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step START
+I0207 04:16:33.605906 20 grpc_server.cc:3585] New request handler for ModelInferHandler, 0
+I0207 04:16:33.605921 20 infer_request.cc:713] [request id: <id_unknown>] prepared: [0x0x7f80f80052e0] request id: , model: gat_test, requested version: -1, actual version: 1, flags: 0x0, correlation id: 0, batch size: 0, priority: 0, timeout (us): 0
+original inputs:
+[0x0x7f80f8005758] input: x__0, type: FP32, original shape: [7,1433], batch + shape: [7,1433], shape: [7,1433]
+[0x0x7f80f8005618] input: edgeindex__1, type: INT64, original shape: [2,34], batch + shape: [2,34], shape: [2,34]
+override inputs:
+inputs:
+[0x0x7f80f8005618] input: edgeindex__1, type: INT64, original shape: [2,34], batch + shape: [2,34], shape: [2,34]
+[0x0x7f80f8005758] input: x__0, type: FP32, original shape: [7,1433], batch + shape: [7,1433], shape: [7,1433]
+original requested outputs:
+logits__0
+requested outputs:
+logits__0
+
+I0207 04:16:33.605943 20 libtorch.cc:2076] model gat_test, instance gat_test_0, executing 1 requests
+I0207 04:16:33.605950 20 libtorch.cc:947] TRITONBACKEND_ModelExecute: Running gat_test_0 with 1 requests
+I0207 04:16:33.606684 20 infer_response.cc:167] add response output: output: logits__0, type: FP32, shape: [7,7]
+I0207 04:16:33.606703 20 grpc_server.cc:2592] GRPC: using buffer for 'logits__0', size: 196, addr: 0x7f8118ab4e60
+I0207 04:16:33.606711 20 grpc_server.cc:3756] ModelInferHandler::InferResponseComplete, 0 step ISSUED
+I0207 04:16:33.606719 20 grpc_server.cc:2712] GRPC free: size 196, addr 0x7f8118ab4e60
+I0207 04:16:33.606843 20 grpc_server.cc:3310] ModelInferHandler::InferRequestComplete
+I0207 04:16:33.606859 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step COMPLETE
+I0207 04:16:33.606875 20 grpc_server.cc:2502] Done for ModelInferHandler, 0
+I0207 04:16:33.606885 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 9 step START
+I0207 04:16:33.606896 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 10
+I0207 04:16:33.606942 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 9 step COMPLETE
+I0207 04:16:33.606962 20 grpc_server.cc:411] Done for ModelStatistics, 9
+I0207 04:16:33.607203 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 10 step START
+I0207 04:16:33.607211 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 11
+I0207 04:16:33.607251 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 10 step COMPLETE
+I0207 04:16:33.607264 20 grpc_server.cc:411] Done for ModelStatistics, 10
+I0207 04:16:33.607379 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step START
+I0207 04:16:33.607394 20 grpc_server.cc:3585] New request handler for ModelInferHandler, 0
+I0207 04:16:33.607408 20 infer_request.cc:713] [request id: <id_unknown>] prepared: [0x0x7f80f8005ba0] request id: , model: gat_test, requested version: -1, actual version: 1, flags: 0x0, correlation id: 0, batch size: 0, priority: 0, timeout (us): 0
+original inputs:
+[0x0x7f80f8005618] input: x__0, type: FP32, original shape: [7,1433], batch + shape: [7,1433], shape: [7,1433]
+[0x0x7f80f8005758] input: edgeindex__1, type: INT64, original shape: [2,34], batch + shape: [2,34], shape: [2,34]
+override inputs:
+inputs:
+[0x0x7f80f8005758] input: edgeindex__1, type: INT64, original shape: [2,34], batch + shape: [2,34], shape: [2,34]
+[0x0x7f80f8005618] input: x__0, type: FP32, original shape: [7,1433], batch + shape: [7,1433], shape: [7,1433]
+original requested outputs:
+logits__0
+requested outputs:
+logits__0
+
+I0207 04:16:33.607429 20 libtorch.cc:2076] model gat_test, instance gat_test_0, executing 1 requests
+I0207 04:16:33.607436 20 libtorch.cc:947] TRITONBACKEND_ModelExecute: Running gat_test_0 with 1 requests
+I0207 04:16:33.608106 20 infer_response.cc:167] add response output: output: logits__0, type: FP32, shape: [7,7]
+I0207 04:16:33.608124 20 grpc_server.cc:2592] GRPC: using buffer for 'logits__0', size: 196, addr: 0x7f8118b733c0
+I0207 04:16:33.608133 20 grpc_server.cc:3756] ModelInferHandler::InferResponseComplete, 0 step ISSUED
+I0207 04:16:33.608141 20 grpc_server.cc:2712] GRPC free: size 196, addr 0x7f8118b733c0
+I0207 04:16:33.608262 20 grpc_server.cc:3310] ModelInferHandler::InferRequestComplete
+I0207 04:16:33.608280 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step COMPLETE
+I0207 04:16:33.608296 20 grpc_server.cc:2502] Done for ModelInferHandler, 0
+I0207 04:16:33.608296 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 11 step START
+I0207 04:16:33.608318 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 12
+I0207 04:16:33.608390 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 11 step COMPLETE
+I0207 04:16:33.608399 20 grpc_server.cc:411] Done for ModelStatistics, 11
+I0207 04:16:33.680187 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 12 step START
+I0207 04:16:33.680219 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 13
+I0207 04:16:33.680304 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 12 step COMPLETE
+I0207 04:16:33.680312 20 grpc_server.cc:411] Done for ModelStatistics, 12
+I0207 04:16:33.680499 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step START
+I0207 04:16:33.680524 20 grpc_server.cc:3585] New request handler for ModelInferHandler, 0
+I0207 04:16:33.680550 20 infer_request.cc:713] [request id: <id_unknown>] prepared: [0x0x7f80f8005eb0] request id: , model: gat_test, requested version: -1, actual version: 1, flags: 0x0, correlation id: 0, batch size: 0, priority: 0, timeout (us): 0
+original inputs:
+[0x0x7f80f8005758] input: x__0, type: FP32, original shape: [4,1433], batch + shape: [4,1433], shape: [4,1433]
+[0x0x7f80f8005618] input: edgeindex__1, type: INT64, original shape: [2,26], batch + shape: [2,26], shape: [2,26]
+override inputs:
+inputs:
+[0x0x7f80f8005618] input: edgeindex__1, type: INT64, original shape: [2,26], batch + shape: [2,26], shape: [2,26]
+[0x0x7f80f8005758] input: x__0, type: FP32, original shape: [4,1433], batch + shape: [4,1433], shape: [4,1433]
+original requested outputs:
+logits__0
+requested outputs:
+logits__0
+
+I0207 04:16:33.680587 20 libtorch.cc:2076] model gat_test, instance gat_test_0, executing 1 requests
+I0207 04:16:33.680608 20 libtorch.cc:947] TRITONBACKEND_ModelExecute: Running gat_test_0 with 1 requests
+I0207 04:16:33.681455 20 infer_response.cc:167] add response output: output: logits__0, type: FP32, shape: [4,7]
+I0207 04:16:33.681473 20 grpc_server.cc:2592] GRPC: using buffer for 'logits__0', size: 112, addr: 0x7f81185682a0
+I0207 04:16:33.681483 20 grpc_server.cc:3756] ModelInferHandler::InferResponseComplete, 0 step ISSUED
+I0207 04:16:33.681509 20 grpc_server.cc:2712] GRPC free: size 112, addr 0x7f81185682a0
+I0207 04:16:33.681585 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step COMPLETE
+I0207 04:16:33.681593 20 grpc_server.cc:2502] Done for ModelInferHandler, 0
+I0207 04:16:33.681607 20 grpc_server.cc:3310] ModelInferHandler::InferRequestComplete
+I0207 04:16:33.681969 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 13 step START
+I0207 04:16:33.681981 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 14
+I0207 04:16:33.682032 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 13 step COMPLETE
+I0207 04:16:33.682040 20 grpc_server.cc:411] Done for ModelStatistics, 13
+I0207 04:16:33.685430 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 14 step START
+I0207 04:16:33.685441 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 15
+I0207 04:16:33.685486 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 14 step COMPLETE
+I0207 04:16:33.685506 20 grpc_server.cc:411] Done for ModelStatistics, 14
+I0207 04:16:33.685930 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step START
+I0207 04:16:33.685947 20 grpc_server.cc:3585] New request handler for ModelInferHandler, 0
+I0207 04:16:33.685962 20 infer_request.cc:713] [request id: <id_unknown>] prepared: [0x0x7f80f8006260] request id: , model: gat_test, requested version: -1, actual version: 1, flags: 0x0, correlation id: 0, batch size: 0, priority: 0, timeout (us): 0
+original inputs:
+[0x0x7f80f8006698] input: x__0, type: FP32, original shape: [4,1433], batch + shape: [4,1433], shape: [4,1433]
+[0x0x7f80f8006598] input: edgeindex__1, type: INT64, original shape: [2,26], batch + shape: [2,26], shape: [2,26]
+override inputs:
+inputs:
+[0x0x7f80f8006598] input: edgeindex__1, type: INT64, original shape: [2,26], batch + shape: [2,26], shape: [2,26]
+[0x0x7f80f8006698] input: x__0, type: FP32, original shape: [4,1433], batch + shape: [4,1433], shape: [4,1433]
+original requested outputs:
+logits__0
+requested outputs:
+logits__0
+
+I0207 04:16:33.685996 20 libtorch.cc:2076] model gat_test, instance gat_test_0, executing 1 requests
+I0207 04:16:33.686003 20 libtorch.cc:947] TRITONBACKEND_ModelExecute: Running gat_test_0 with 1 requests
+I0207 04:16:33.698716 20 infer_response.cc:167] add response output: output: logits__0, type: FP32, shape: [4,7]
+I0207 04:16:33.698927 20 grpc_server.cc:2592] GRPC: using buffer for 'logits__0', size: 112, addr: 0x7f8118ab4e60
+I0207 04:16:33.699276 20 grpc_server.cc:3756] ModelInferHandler::InferResponseComplete, 0 step ISSUED
+I0207 04:16:33.699482 20 grpc_server.cc:2712] GRPC free: size 112, addr 0x7f8118ab4e60
+I0207 04:16:33.700457 20 grpc_server.cc:3310] ModelInferHandler::InferRequestComplete
+I0207 04:16:33.700549 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 15 step START
+I0207 04:16:33.700670 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 16
+I0207 04:16:33.700725 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 15 step COMPLETE
+I0207 04:16:33.700736 20 grpc_server.cc:411] Done for ModelStatistics, 15
+I0207 04:16:33.700575 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step COMPLETE
+I0207 04:16:33.700759 20 grpc_server.cc:2502] Done for ModelInferHandler, 0
+I0207 04:16:33.700973 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 16 step START
+I0207 04:16:33.700986 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 17
+I0207 04:16:33.701030 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 16 step COMPLETE
+I0207 04:16:33.701039 20 grpc_server.cc:411] Done for ModelStatistics, 16
+I0207 04:16:33.701163 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step START
+I0207 04:16:33.701176 20 grpc_server.cc:3585] New request handler for ModelInferHandler, 0
+I0207 04:16:33.701193 20 infer_request.cc:713] [request id: <id_unknown>] prepared: [0x0x7f80f8006260] request id: , model: gat_test, requested version: -1, actual version: 1, flags: 0x0, correlation id: 0, batch size: 0, priority: 0, timeout (us): 0
+original inputs:
+[0x0x7f80f8006698] input: x__0, type: FP32, original shape: [4,1433], batch + shape: [4,1433], shape: [4,1433]
+[0x0x7f80f8006598] input: edgeindex__1, type: INT64, original shape: [2,26], batch + shape: [2,26], shape: [2,26]
+override inputs:
+inputs:
+[0x0x7f80f8006598] input: edgeindex__1, type: INT64, original shape: [2,26], batch + shape: [2,26], shape: [2,26]
+[0x0x7f80f8006698] input: x__0, type: FP32, original shape: [4,1433], batch + shape: [4,1433], shape: [4,1433]
+original requested outputs:
+logits__0
+requested outputs:
+logits__0
+
+I0207 04:16:33.701222 20 libtorch.cc:2076] model gat_test, instance gat_test_0, executing 1 requests
+I0207 04:16:33.701229 20 libtorch.cc:947] TRITONBACKEND_ModelExecute: Running gat_test_0 with 1 requests
+I0207 04:16:33.711085 20 infer_response.cc:167] add response output: output: logits__0, type: FP32, shape: [4,7]
+I0207 04:16:33.711110 20 grpc_server.cc:2592] GRPC: using buffer for 'logits__0', size: 112, addr: 0x7f8118b733c0
+I0207 04:16:33.711120 20 grpc_server.cc:3756] ModelInferHandler::InferResponseComplete, 0 step ISSUED
+I0207 04:16:33.711130 20 grpc_server.cc:2712] GRPC free: size 112, addr 0x7f8118b733c0
+I0207 04:16:33.711188 20 grpc_server.cc:3310] ModelInferHandler::InferRequestComplete
+I0207 04:16:33.711224 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step COMPLETE
+I0207 04:16:33.711232 20 grpc_server.cc:2502] Done for ModelInferHandler, 0
+I0207 04:16:33.711269 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 17 step START
+I0207 04:16:33.711284 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 18
+I0207 04:16:33.711334 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 17 step COMPLETE
+I0207 04:16:33.711341 20 grpc_server.cc:411] Done for ModelStatistics, 17
+I0207 04:16:33.711584 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 18 step START
+I0207 04:16:33.711600 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 19
+I0207 04:16:33.711644 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 18 step COMPLETE
+I0207 04:16:33.711652 20 grpc_server.cc:411] Done for ModelStatistics, 18
+I0207 04:16:33.711788 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step START
+I0207 04:16:33.711804 20 grpc_server.cc:3585] New request handler for ModelInferHandler, 0
+I0207 04:16:33.711822 20 infer_request.cc:713] [request id: <id_unknown>] prepared: [0x0x7f8100006600] request id: , model: gat_test, requested version: -1, actual version: 1, flags: 0x0, correlation id: 0, batch size: 0, priority: 0, timeout (us): 0
+original inputs:
+[0x0x7f8100006a38] input: x__0, type: FP32, original shape: [4,1433], batch + shape: [4,1433], shape: [4,1433]
+[0x0x7f8100006938] input: edgeindex__1, type: INT64, original shape: [2,26], batch + shape: [2,26], shape: [2,26]
+override inputs:
+inputs:
+[0x0x7f8100006938] input: edgeindex__1, type: INT64, original shape: [2,26], batch + shape: [2,26], shape: [2,26]
+[0x0x7f8100006a38] input: x__0, type: FP32, original shape: [4,1433], batch + shape: [4,1433], shape: [4,1433]
+original requested outputs:
+logits__0
+requested outputs:
+logits__0
+
+I0207 04:16:33.711848 20 libtorch.cc:2076] model gat_test, instance gat_test_0, executing 1 requests
+I0207 04:16:33.711856 20 libtorch.cc:947] TRITONBACKEND_ModelExecute: Running gat_test_0 with 1 requests
+I0207 04:16:33.722373 20 infer_response.cc:167] add response output: output: logits__0, type: FP32, shape: [4,7]
+I0207 04:16:33.722398 20 grpc_server.cc:2592] GRPC: using buffer for 'logits__0', size: 112, addr: 0x7f81185682a0
+I0207 04:16:33.722409 20 grpc_server.cc:3756] ModelInferHandler::InferResponseComplete, 0 step ISSUED
+I0207 04:16:33.722430 20 grpc_server.cc:2712] GRPC free: size 112, addr 0x7f81185682a0
+I0207 04:16:33.722527 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step COMPLETE
+I0207 04:16:33.722538 20 grpc_server.cc:2502] Done for ModelInferHandler, 0
+I0207 04:16:33.722553 20 grpc_server.cc:3310] ModelInferHandler::InferRequestComplete
+I0207 04:16:33.722579 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 19 step START
+I0207 04:16:33.722596 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 20
+I0207 04:16:33.722650 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 19 step COMPLETE
+I0207 04:16:33.722658 20 grpc_server.cc:411] Done for ModelStatistics, 19
+I0207 04:16:33.722912 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 20 step START
+I0207 04:16:33.722928 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 21
+I0207 04:16:33.722973 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 20 step COMPLETE
+I0207 04:16:33.722981 20 grpc_server.cc:411] Done for ModelStatistics, 20
+I0207 04:16:33.723098 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step START
+I0207 04:16:33.723108 20 grpc_server.cc:3585] New request handler for ModelInferHandler, 0
+I0207 04:16:33.723126 20 infer_request.cc:713] [request id: <id_unknown>] prepared: [0x0x7f81000066c0] request id: , model: gat_test, requested version: -1, actual version: 1, flags: 0x0, correlation id: 0, batch size: 0, priority: 0, timeout (us): 0
+original inputs:
+[0x0x7f8100006d98] input: x__0, type: FP32, original shape: [4,1433], batch + shape: [4,1433], shape: [4,1433]
+[0x0x7f81000069f8] input: edgeindex__1, type: INT64, original shape: [2,26], batch + shape: [2,26], shape: [2,26]
+override inputs:
+inputs:
+[0x0x7f81000069f8] input: edgeindex__1, type: INT64, original shape: [2,26], batch + shape: [2,26], shape: [2,26]
+[0x0x7f8100006d98] input: x__0, type: FP32, original shape: [4,1433], batch + shape: [4,1433], shape: [4,1433]
+original requested outputs:
+logits__0
+requested outputs:
+logits__0
+
+I0207 04:16:33.723150 20 libtorch.cc:2076] model gat_test, instance gat_test_0, executing 1 requests
+I0207 04:16:33.723158 20 libtorch.cc:947] TRITONBACKEND_ModelExecute: Running gat_test_0 with 1 requests
+I0207 04:16:33.724021 20 infer_response.cc:167] add response output: output: logits__0, type: FP32, shape: [4,7]
+I0207 04:16:33.724040 20 grpc_server.cc:2592] GRPC: using buffer for 'logits__0', size: 112, addr: 0x7f8118ab4e60
+I0207 04:16:33.724050 20 grpc_server.cc:3756] ModelInferHandler::InferResponseComplete, 0 step ISSUED
+I0207 04:16:33.724059 20 grpc_server.cc:2712] GRPC free: size 112, addr 0x7f8118ab4e60
+I0207 04:16:33.724135 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step COMPLETE
+I0207 04:16:33.724144 20 grpc_server.cc:2502] Done for ModelInferHandler, 0
+I0207 04:16:33.724157 20 grpc_server.cc:3310] ModelInferHandler::InferRequestComplete
+I0207 04:16:33.724171 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 21 step START
+I0207 04:16:33.724187 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 22
+I0207 04:16:33.724235 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 21 step COMPLETE
+I0207 04:16:33.724244 20 grpc_server.cc:411] Done for ModelStatistics, 21
+I0207 04:16:33.724448 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 22 step START
+I0207 04:16:33.724461 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 23
+I0207 04:16:33.724523 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 22 step COMPLETE
+I0207 04:16:33.724534 20 grpc_server.cc:411] Done for ModelStatistics, 22
+I0207 04:16:33.724679 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step START
+I0207 04:16:33.724691 20 grpc_server.cc:3585] New request handler for ModelInferHandler, 0
+I0207 04:16:33.724709 20 infer_request.cc:713] [request id: <id_unknown>] prepared: [0x0x7f810000cb50] request id: , model: gat_test, requested version: -1, actual version: 1, flags: 0x0, correlation id: 0, batch size: 0, priority: 0, timeout (us): 0
+original inputs:
+[0x0x7f810000cf88] input: x__0, type: FP32, original shape: [4,1433], batch + shape: [4,1433], shape: [4,1433]
+[0x0x7f810000ce88] input: edgeindex__1, type: INT64, original shape: [2,26], batch + shape: [2,26], shape: [2,26]
+override inputs:
+inputs:
+[0x0x7f810000ce88] input: edgeindex__1, type: INT64, original shape: [2,26], batch + shape: [2,26], shape: [2,26]
+[0x0x7f810000cf88] input: x__0, type: FP32, original shape: [4,1433], batch + shape: [4,1433], shape: [4,1433]
+original requested outputs:
+logits__0
+requested outputs:
+logits__0
+
+I0207 04:16:33.724739 20 libtorch.cc:2076] model gat_test, instance gat_test_0, executing 1 requests
+I0207 04:16:33.724747 20 libtorch.cc:947] TRITONBACKEND_ModelExecute: Running gat_test_0 with 1 requests
+I0207 04:16:33.725617 20 infer_response.cc:167] add response output: output: logits__0, type: FP32, shape: [4,7]
+I0207 04:16:33.725637 20 grpc_server.cc:2592] GRPC: using buffer for 'logits__0', size: 112, addr: 0x7f81184c6aa0
+I0207 04:16:33.725647 20 grpc_server.cc:3756] ModelInferHandler::InferResponseComplete, 0 step ISSUED
+I0207 04:16:33.725656 20 grpc_server.cc:2712] GRPC free: size 112, addr 0x7f81184c6aa0
+I0207 04:16:33.725734 20 grpc_server.cc:3592] Process for ModelInferHandler, rpc_ok=1, 0 step COMPLETE
+I0207 04:16:33.725742 20 grpc_server.cc:2502] Done for ModelInferHandler, 0
+I0207 04:16:33.725755 20 grpc_server.cc:3310] ModelInferHandler::InferRequestComplete
+I0207 04:16:33.725770 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 23 step START
+I0207 04:16:33.725784 20 grpc_server.cc:225] Ready for RPC 'ModelStatistics', 24
+I0207 04:16:33.725832 20 grpc_server.cc:270] Process for ModelStatistics, rpc_ok=1, 23 step COMPLETE
+I0207 04:16:33.725840 20 grpc_server.cc:411] Done for ModelStatistics, 23
+I0207 04:16:33.876485 20 grpc_server.cc:270] Process for SystemSharedMemoryUnregister, rpc_ok=1, 0 step START
+I0207 04:16:33.876542 20 grpc_server.cc:225] Ready for RPC 'SystemSharedMemoryUnregister', 1
+I0207 04:16:33.876581 20 grpc_server.cc:270] Process for SystemSharedMemoryUnregister, rpc_ok=1, 0 step COMPLETE
+I0207 04:16:33.876588 20 grpc_server.cc:411] Done for SystemSharedMemoryUnregister, 0
+I0207 04:16:33.876755 20 grpc_server.cc:270] Process for SystemSharedMemoryUnregister, rpc_ok=1, 1 step START
+I0207 04:16:33.876768 20 grpc_server.cc:225] Ready for RPC 'SystemSharedMemoryUnregister', 2
+I0207 04:16:33.876801 20 grpc_server.cc:270] Process for SystemSharedMemoryUnregister, rpc_ok=1, 1 step COMPLETE
+I0207 04:16:33.876807 20 grpc_server.cc:411] Done for SystemSharedMemoryUnregister, 1
+I0207 04:16:33.876973 20 grpc_server.cc:270] Process for SystemSharedMemoryUnregister, rpc_ok=1, 2 step START
+I0207 04:16:33.876986 20 grpc_server.cc:225] Ready for RPC 'SystemSharedMemoryUnregister', 3
+I0207 04:16:33.877015 20 grpc_server.cc:270] Process for SystemSharedMemoryUnregister, rpc_ok=1, 2 step COMPLETE
+I0207 04:16:33.877022 20 grpc_server.cc:411] Done for SystemSharedMemoryUnregister, 2
+I0207 04:16:33.877108 20 grpc_server.cc:270] Process for SystemSharedMemoryUnregister, rpc_ok=1, 3 step START
+I0207 04:16:33.877119 20 grpc_server.cc:225] Ready for RPC 'SystemSharedMemoryUnregister', 4
+I0207 04:16:33.877149 20 grpc_server.cc:270] Process for SystemSharedMemoryUnregister, rpc_ok=1, 3 step COMPLETE
+I0207 04:16:33.877156 20 grpc_server.cc:411] Done for SystemSharedMemoryUnregister, 3
+I0207 04:16:33.877275 20 grpc_server.cc:270] Process for SystemSharedMemoryUnregister, rpc_ok=1, 4 step START
+I0207 04:16:33.877287 20 grpc_server.cc:225] Ready for RPC 'SystemSharedMemoryUnregister', 5
+I0207 04:16:33.877315 20 grpc_server.cc:270] Process for SystemSharedMemoryUnregister, rpc_ok=1, 4 step COMPLETE
+I0207 04:16:33.877322 20 grpc_server.cc:411] Done for SystemSharedMemoryUnregister, 4
+I0207 04:16:33.877414 20 grpc_server.cc:270] Process for SystemSharedMemoryUnregister, rpc_ok=1, 5 step START
+I0207 04:16:33.877426 20 grpc_server.cc:225] Ready for RPC 'SystemSharedMemoryUnregister', 6
+I0207 04:16:33.877461 20 grpc_server.cc:270] Process for SystemSharedMemoryUnregister, rpc_ok=1, 5 step COMPLETE
+I0207 04:16:33.877477 20 grpc_server.cc:411] Done for SystemSharedMemoryUnregister, 5
